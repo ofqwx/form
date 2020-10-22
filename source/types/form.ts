@@ -14,5 +14,7 @@ export type TFormState = null | {
   updateFieldValue: (fieldName: string, newValue: any) => void;
   setFieldError: (fieldName: string, error: string) => void;
   cleanFieldError: (fieldName: string) => void;
+  isValid: () => boolean;
+  hasChanged: () => boolean;
   submit: (event: SyntheticEvent) => void;
 };

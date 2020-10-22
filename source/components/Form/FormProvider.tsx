@@ -11,18 +11,36 @@ type TFormProviderProps = {
 };
 
 export default function FormProvider({
-  initialValues,
+  initialValues = {},
   onSubmit,
   children,
 }: TFormProviderProps) {
-  const [formValues, setFormValues] = useState(initialValues || {});
+  const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
+  const [fieldsWithChanges, setFieldsWithChanges] = useState([]);
 
   function updateFieldValue(fieldName, newValue) {
-    setFormValues((prevFormValues) => ({
-      ...prevFormValues,
-      [fieldName]: newValue,
-    }));
+    setFormValues((prevFormValues) => {
+      return {
+        ...prevFormValues,
+        [fieldName]: newValue,
+      };
+    });
+
+    const valueHasChanged =
+      formValues[fieldName] !== newValue &&
+      initialValues[fieldName] !== newValue;
+
+    if (valueHasChanged && !fieldsWithChanges.includes(fieldName)) {
+      setFieldsWithChanges((prevFieldsWithChanges) => [
+        ...prevFieldsWithChanges,
+        fieldName,
+      ]);
+    } else if (!valueHasChanged && fieldsWithChanges.includes(fieldName)) {
+      setFieldsWithChanges((prevFieldsWithChanges) =>
+        prevFieldsWithChanges.filter((field) => field !== fieldName)
+      );
+    }
   }
 
   function setFieldError(fieldName, error) {
@@ -33,7 +51,7 @@ export default function FormProvider({
   }
 
   function cleanFieldError(fieldName) {
-     if (formErrors[fieldName]) {
+    if (formErrors[fieldName]) {
       setFormErrors((prevFormErrors) => {
         delete prevFormErrors[fieldName];
         return prevFormErrors;
@@ -47,6 +65,14 @@ export default function FormProvider({
 
   function getError(fieldName) {
     return formErrors[fieldName] || null;
+  }
+
+  function isValid() {
+    return !Object.keys(formErrors).length;
+  }
+
+  function hasChanged() {
+    return Boolean(fieldsWithChanges.length)
   }
 
   function submit(e) {
@@ -63,6 +89,8 @@ export default function FormProvider({
     updateFieldValue,
     setFieldError,
     cleanFieldError,
+    isValid,
+    hasChanged,
     submit,
   };
 
