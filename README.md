@@ -38,9 +38,9 @@ npm install @ofqwx/form
 
 **Props**
 
-`onSubmit` (required): A function to handle the values when form is submitted. This function will receive the values from the form in the shape of an object where the keys will be the name of each field.
+`onSubmit` (required): A function to handle the values when a form is submitted. This function will receive the values from the form in the shape of an object where the keys will be the name of each field.
 
-`initialValues` (optional): An object containing initial values if you want to show the form pre filled. Keys in this object need to be the same as the names of the fields.
+`initialValues` (optional): An object containing initial values if you want to show the form pre-filled. Keys in this object need to be the same as the names of the fields.
 
 ### **Input**
 
@@ -51,7 +51,7 @@ npm install @ofqwx/form
 `name` (required): A string that defines the name of the input, this prop is what connects your input with the form state, so be sure in case you're using initialValues that names and initialValues keys are the same, otherwise this value will not be controlled by the Form component.
 
 `type` (optional): A string that defines the type of the input element.  
-Currently we only support type **_"text"_** and it's the default value so you can ommit this prop for now.
+Currently, we only support type **_"text"_** and it's the default value so you can commit this prop for now.
 
 `label` (optional): A string for the label of your input.
 
@@ -59,7 +59,7 @@ Currently we only support type **_"text"_** and it's the default value so you ca
 
 ## Validations
 
-In order to use our validator functions just import them and send it to the `<Input />` component in the `validations` array prop.
+To use our validator functions just import them and send it to the `<Input />` component in the `validations` array prop.
 
 ### Required validation
 
@@ -119,7 +119,7 @@ function MyForm() {
 
 ### Multiple validations
 
-For multiple validation just add the validation functions in the validations props, the validations will be executed from top to bottom.
+For multiple validations just add the validation functions in the validations props, the validations will be executed from top to bottom.
 
 ```JSX
 import {Form, Input, validations} from '@ofqwx/form`
@@ -148,7 +148,7 @@ function MyForm() {
 
 ### Custom validations
 
-If you want to create your own validation function, just create a function that receives the message you want to show when validation fails and returns a function that receives the value to evaluate and **throw** the message in case validation fails.
+If you want to create your validation function, just create a function that receives the message you want to show when validation fails and returns a function that receives the value to evaluate and **throw** the message in case of validation fails.
 
 ```JSX
 function numberValidation(validationMessage) {
