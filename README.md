@@ -180,32 +180,17 @@ Here you can see an example of a simple form implementation.
 import React, {useState} from 'react'
 import {Form, Input, validations} from '@ofqwx/form';
 
-function mockSubmit(values) {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve('submitted!'), 2000);
-  });
-}
-
 function App() {
-  const [submitting, setSubmitting] = useState(false);
-
-  async function onSubmit(values) {
-    setSubmitting(true);
-
-    // You should handle errors here, this is just an example
-    await mockSubmit(values);
-
-    setSubmitting(false);
-  }
-
   return (
     <Form
-      initialValues={{ firstName: 'wooga.name.antonio' }}
-      onSubmit={onSubmit}
+      initialValues={{ firstName: 'wooga' }}
+      onSubmit={yourOnSubmitFunctionHere}
     >
-      <Input label="First name" name="firstName" />
+      <Input label="First name" name="firstName" validations={[
+        validations.string.required("This field is mandatory")
+      ]} />
 
-      <button type="submit">{submitting ? 'Submitting' : 'Submit'}</button>
+      <button type="submit">Submit</button>
     </Form>
   );
 }
