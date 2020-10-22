@@ -38,7 +38,7 @@ export default function Input({
       {input.error ? (
         <Fragment>
           <br />
-          <div>{input.error}</div>
+          <div style={{ color: 'red' }}>{input.error}</div>
         </Fragment>
       ) : null}
     </fieldset>

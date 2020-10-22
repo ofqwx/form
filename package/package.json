@@ -1,6 +1,6 @@
 {
   "name": "@ofqwx/form",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "Antonio Aznarez",
   "repository": {
     "type" : "git",
@@ -35,11 +35,7 @@
   "scripts": {
     "test": "jest",
     "type-check": "tsc --noEmit",
-    "build": "rollup -c rollup.config.js && cp README.md package/README.md"
-  },
-  "dependencies": {
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "build": "rollup -c rollup.config.js && cp package.json package/package.json && cp README.md package/README.md"
   },
   "peer-dependencies": {
     "react": "^16.14.0",
@@ -48,7 +44,7 @@
   "files": [
     "dist"
   ],
-  "main": "package/dist/cjs/bundle.js",
-  "browser": "package/dist/umd/bundle.js",
-  "module": "package/dist/es/bundle.m.js"
+  "main": "dist/cjs/bundle.js",
+  "browser": "dist/umd/bundle.js",
+  "module": "dist/es/bundle.m.js"
 }
