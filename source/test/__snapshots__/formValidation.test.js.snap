@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`String regex and required validation 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -6,12 +6,16 @@
+        </label>
+        <br />
+        <input
+          name=\\"firstName\\"
+          type=\\"text\\"
+-         value=\\"antonio\\"
++         value=\\"\\"
+        />
++       <br />
++       <div>
++         First name is required
++       </div>
+      </fieldset>
+      <button
+        type=\\"submit\\"
+      >
+        Submit"
+`;
+
+exports[`String regex and required validation 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -6,12 +6,16 @@
+        </label>
+        <br />
+        <input
+          name=\\"firstName\\"
+          type=\\"text\\"
+-         value=\\"antonio\\"
++         value=\\"wooga\\"
+        />
++       <br />
++       <div>
++         First name must start with \\"wooga.name\\"
++       </div>
+      </fieldset>
+      <button
+        type=\\"submit\\"
+      >
+        Submit"
+`;
+
+exports[`String regex and required validation 3`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -6,11 +6,11 @@
+        </label>
+        <br />
+        <input
+          name=\\"firstName\\"
+          type=\\"text\\"
+-         value=\\"antonio\\"
++         value=\\"wooga.name.antonio\\"
+        />
+      </fieldset>
+      <button
+        type=\\"submit\\"
+      >"
+`;
+
+exports[`String regex validation 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -6,12 +6,16 @@
+        </label>
+        <br />
+        <input
+          name=\\"firstName\\"
+          type=\\"text\\"
+-         value=\\"\\"
++         value=\\"antonio\\"
+        />
++       <br />
++       <div>
++         First name must start with \\"wooga.name\\"
++       </div>
+      </fieldset>
+      <button
+        type=\\"submit\\"
+      >
+        Submit"
+`;
+
+exports[`String regex validation 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -6,11 +6,11 @@
+        </label>
+        <br />
+        <input
+          name=\\"firstName\\"
+          type=\\"text\\"
+-         value=\\"\\"
++         value=\\"wooga.name antonio\\"
+        />
+      </fieldset>
+      <button
+        type=\\"submit\\"
+      >"
+`;
+
+exports[`String required validation 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -6,12 +6,16 @@
+        </label>
+        <br />
+        <input
+          name=\\"firstName\\"
+          type=\\"text\\"
+-         value=\\"antonio\\"
++         value=\\"\\"
+        />
++       <br />
++       <div>
++         First name is required
++       </div>
+      </fieldset>
+      <button
+        type=\\"submit\\"
+      >
+        Submit"
+`;
+
+exports[`String required validation 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -6,11 +6,11 @@
+        </label>
+        <br />
+        <input
+          name=\\"firstName\\"
+          type=\\"text\\"
+-         value=\\"antonio\\"
++         value=\\"Wooga\\"
+        />
+      </fieldset>
+      <button
+        type=\\"submit\\"
+      >"
+`;

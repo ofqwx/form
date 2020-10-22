@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Value change when change event is triggered 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -6,11 +6,11 @@
+        </label>
+        <br />
+        <input
+          name=\\"firstName\\"
+          type=\\"text\\"
+-         value=\\"Antonio\\"
++         value=\\"Pedro\\"
+        />
+      </fieldset>
+      <button
+        type=\\"submit\\"
+      >"
+`;

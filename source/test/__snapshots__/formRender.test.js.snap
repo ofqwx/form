@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render form with initial value 1`] = `
+<div>
+  <form>
+    <fieldset>
+      <label>
+        First name
+      </label>
+      <br />
+      <input
+        name="firstName"
+        type="text"
+        value="Antonio"
+      />
+    </fieldset>
+    <button
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+`;
