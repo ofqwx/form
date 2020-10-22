@@ -5,26 +5,26 @@ exports[`String regex and required validation 1`] = `
 - First value
 + Second value
 
-@@ -6,12 +6,18 @@
-        </label>
-        <br />
-        <input
-          name=\\"firstName\\"
-          type=\\"text\\"
--         value=\\"antonio\\"
-+         value=\\"\\"
-        />
-+       <br />
-+       <div
-+         style=\\"color: red;\\"
-+       >
-+         First name is required
-+       </div>
-      </fieldset>
+@@ -5,12 +5,18 @@
+      </label>
+      <br />
+      <input
+        name=\\"firstName\\"
+        type=\\"text\\"
+-       value=\\"antonio\\"
++       value=\\"\\"
+      />
++     <br />
++     <div
++       style=\\"color: red;\\"
++     >
++       First name is required
++     </div>
       <button
         type=\\"submit\\"
       >
-        Submit"
+        Submit
+      </button>"
 `;
 
 exports[`String regex and required validation 2`] = `
@@ -32,26 +32,26 @@ exports[`String regex and required validation 2`] = `
 - First value
 + Second value
 
-@@ -6,12 +6,18 @@
-        </label>
-        <br />
-        <input
-          name=\\"firstName\\"
-          type=\\"text\\"
--         value=\\"antonio\\"
-+         value=\\"wooga\\"
-        />
-+       <br />
-+       <div
-+         style=\\"color: red;\\"
-+       >
-+         First name must start with \\"wooga.name\\"
-+       </div>
-      </fieldset>
+@@ -5,12 +5,18 @@
+      </label>
+      <br />
+      <input
+        name=\\"firstName\\"
+        type=\\"text\\"
+-       value=\\"antonio\\"
++       value=\\"wooga\\"
+      />
++     <br />
++     <div
++       style=\\"color: red;\\"
++     >
++       First name must start with \\"wooga.name\\"
++     </div>
       <button
         type=\\"submit\\"
       >
-        Submit"
+        Submit
+      </button>"
 `;
 
 exports[`String regex and required validation 3`] = `
@@ -59,19 +59,19 @@ exports[`String regex and required validation 3`] = `
 - First value
 + Second value
 
-@@ -6,11 +6,11 @@
-        </label>
-        <br />
-        <input
-          name=\\"firstName\\"
-          type=\\"text\\"
--         value=\\"antonio\\"
-+         value=\\"wooga.name.antonio\\"
-        />
-      </fieldset>
+@@ -5,11 +5,11 @@
+      </label>
+      <br />
+      <input
+        name=\\"firstName\\"
+        type=\\"text\\"
+-       value=\\"antonio\\"
++       value=\\"wooga.name.antonio\\"
+      />
       <button
         type=\\"submit\\"
-      >"
+      >
+        Submit"
 `;
 
 exports[`String regex validation 1`] = `
@@ -79,26 +79,26 @@ exports[`String regex validation 1`] = `
 - First value
 + Second value
 
-@@ -6,12 +6,18 @@
-        </label>
-        <br />
-        <input
-          name=\\"firstName\\"
-          type=\\"text\\"
--         value=\\"\\"
-+         value=\\"antonio\\"
-        />
-+       <br />
-+       <div
-+         style=\\"color: red;\\"
-+       >
-+         First name must start with \\"wooga.name\\"
-+       </div>
-      </fieldset>
+@@ -5,12 +5,18 @@
+      </label>
+      <br />
+      <input
+        name=\\"firstName\\"
+        type=\\"text\\"
+-       value=\\"\\"
++       value=\\"antonio\\"
+      />
++     <br />
++     <div
++       style=\\"color: red;\\"
++     >
++       First name must start with \\"wooga.name\\"
++     </div>
       <button
         type=\\"submit\\"
       >
-        Submit"
+        Submit
+      </button>"
 `;
 
 exports[`String regex validation 2`] = `
@@ -106,19 +106,19 @@ exports[`String regex validation 2`] = `
 - First value
 + Second value
 
-@@ -6,11 +6,11 @@
-        </label>
-        <br />
-        <input
-          name=\\"firstName\\"
-          type=\\"text\\"
--         value=\\"\\"
-+         value=\\"wooga.name antonio\\"
-        />
-      </fieldset>
+@@ -5,11 +5,11 @@
+      </label>
+      <br />
+      <input
+        name=\\"firstName\\"
+        type=\\"text\\"
+-       value=\\"\\"
++       value=\\"wooga.name antonio\\"
+      />
       <button
         type=\\"submit\\"
-      >"
+      >
+        Submit"
 `;
 
 exports[`String required validation 1`] = `
@@ -126,26 +126,26 @@ exports[`String required validation 1`] = `
 - First value
 + Second value
 
-@@ -6,12 +6,18 @@
-        </label>
-        <br />
-        <input
-          name=\\"firstName\\"
-          type=\\"text\\"
--         value=\\"antonio\\"
-+         value=\\"\\"
-        />
-+       <br />
-+       <div
-+         style=\\"color: red;\\"
-+       >
-+         First name is required
-+       </div>
-      </fieldset>
+@@ -5,12 +5,18 @@
+      </label>
+      <br />
+      <input
+        name=\\"firstName\\"
+        type=\\"text\\"
+-       value=\\"antonio\\"
++       value=\\"\\"
+      />
++     <br />
++     <div
++       style=\\"color: red;\\"
++     >
++       First name is required
++     </div>
       <button
         type=\\"submit\\"
       >
-        Submit"
+        Submit
+      </button>"
 `;
 
 exports[`String required validation 2`] = `
@@ -153,17 +153,17 @@ exports[`String required validation 2`] = `
 - First value
 + Second value
 
-@@ -6,11 +6,11 @@
-        </label>
-        <br />
-        <input
-          name=\\"firstName\\"
-          type=\\"text\\"
--         value=\\"antonio\\"
-+         value=\\"Wooga\\"
-        />
-      </fieldset>
+@@ -5,11 +5,11 @@
+      </label>
+      <br />
+      <input
+        name=\\"firstName\\"
+        type=\\"text\\"
+-       value=\\"antonio\\"
++       value=\\"Wooga\\"
+      />
       <button
         type=\\"submit\\"
-      >"
+      >
+        Submit"
 `;

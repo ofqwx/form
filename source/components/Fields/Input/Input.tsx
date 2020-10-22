@@ -19,7 +19,7 @@ export default function Input({
   const { input } = useField(name, { validations });
 
   return (
-    <fieldset>
+    <Fragment>
       {label ? (
         <Fragment>
           <label>{label}</label>
@@ -41,6 +41,6 @@ export default function Input({
           <div style={{ color: 'red' }}>{input.error}</div>
         </Fragment>
       ) : null}
-    </fieldset>
+    </Fragment>
   );
 }

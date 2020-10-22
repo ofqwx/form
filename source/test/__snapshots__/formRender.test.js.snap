@@ -3,17 +3,15 @@
 exports[`Render form with initial value 1`] = `
 <div>
   <form>
-    <fieldset>
-      <label>
-        First name
-      </label>
-      <br />
-      <input
-        name="firstName"
-        type="text"
-        value="Antonio"
-      />
-    </fieldset>
+    <label>
+      First name
+    </label>
+    <br />
+    <input
+      name="firstName"
+      type="text"
+      value="Antonio"
+    />
     <button
       type="submit"
     >
