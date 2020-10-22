@@ -14,7 +14,7 @@ expect.extend({ toMatchDiffSnapshot });
 test('String required validation', async () => {
   const { asFragment } = render(
     <Form initialValues={{ firstName: 'antonio' }} onSubmit={() => undefined}>
-      <Input.Text
+      <Input
         label="First name"
         name="firstName"
         validations={[validations.string.required('First name is required')]}
@@ -46,7 +46,7 @@ test('String regex validation', async () => {
 
   const { asFragment } = render(
     <Form onSubmit={() => undefined}>
-      <Input.Text
+      <Input
         label="First name"
         name="firstName"
         validations={[
@@ -83,7 +83,7 @@ test('String regex and required validation', async () => {
 
   const { asFragment } = render(
     <Form initialValues={{ firstName: 'antonio' }} onSubmit={() => undefined}>
-      <Input.Text
+      <Input
         label="First name"
         name="firstName"
         validations={[

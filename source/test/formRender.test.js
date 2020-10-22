@@ -10,7 +10,7 @@ import '@testing-library/jest-dom/extend-expect';
 test('Render form with initial value', () => {
   const { container } = render(
     <Form initialValues={{ firstName: 'Antonio' }} onSubmit={() => undefined}>
-      <Input.Text label="First name" name="firstName" />
+      <Input label="First name" name="firstName" />
 
       <button type="submit">Submit</button>
     </Form>

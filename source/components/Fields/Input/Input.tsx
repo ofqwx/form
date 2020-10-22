@@ -9,7 +9,7 @@ type TInputProps = {
   validations?: TValidations;
 };
 
-function Input({
+export default function Input({
   name,
   type = 'text',
   label,
@@ -44,7 +44,3 @@ function Input({
     </fieldset>
   );
 }
-
-export default {
-  Text: (props: TInputProps) => <Input {...props} />,
-};

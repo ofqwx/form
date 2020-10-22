@@ -15,7 +15,7 @@ test('Submit form values', () => {
       initialValues={{ firstName: 'wooga.name.antonio' }}
       onSubmit={mockSubmitFunction}
     >
-      <Input.Text label="First name" name="firstName" />
+      <Input label="First name" name="firstName" />
 
       <button type="submit">Submit</button>
     </Form>

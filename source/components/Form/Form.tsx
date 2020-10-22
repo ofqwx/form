@@ -9,20 +9,25 @@ type TFormProps = {
   children: ReactNode;
 };
 
-function Form({ children }: { children: ReactNode }) {
+function Form({ children, ...props }: { children: ReactNode }) {
   const { submit } = useForm();
 
-  return <form onSubmit={submit}>{children}</form>;
+  return (
+    <form onSubmit={submit} {...props}>
+      {children}
+    </form>
+  );
 }
 
 export default function FormSetup({
   onSubmit,
   initialValues,
   children,
+  ...props
 }: TFormProps) {
   return (
     <FormProvider onSubmit={onSubmit} initialValues={initialValues}>
-      <Form>{children}</Form>
+      <Form {...props}>{children}</Form>
     </FormProvider>
   );
 }
