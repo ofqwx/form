@@ -35,7 +35,7 @@
   "scripts": {
     "test": "jest",
     "type-check": "tsc --noEmit",
-    "build": "rollup -c rollup.config.js && cp README.md package/README.md"
+    "build": "yarn test && rollup -c rollup.config.js && cp README.md package/README.md"
   },
   "dependencies": {
     "react": "^16.14.0",

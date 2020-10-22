@@ -5,7 +5,7 @@ exports[`String regex and required validation 1`] = `
 - First value
 + Second value
 
-@@ -6,12 +6,16 @@
+@@ -6,12 +6,18 @@
         </label>
         <br />
         <input
@@ -15,7 +15,9 @@ exports[`String regex and required validation 1`] = `
 +         value=\\"\\"
         />
 +       <br />
-+       <div>
++       <div
++         style=\\"color: red;\\"
++       >
 +         First name is required
 +       </div>
       </fieldset>
@@ -30,7 +32,7 @@ exports[`String regex and required validation 2`] = `
 - First value
 + Second value
 
-@@ -6,12 +6,16 @@
+@@ -6,12 +6,18 @@
         </label>
         <br />
         <input
@@ -40,7 +42,9 @@ exports[`String regex and required validation 2`] = `
 +         value=\\"wooga\\"
         />
 +       <br />
-+       <div>
++       <div
++         style=\\"color: red;\\"
++       >
 +         First name must start with \\"wooga.name\\"
 +       </div>
       </fieldset>
@@ -75,7 +79,7 @@ exports[`String regex validation 1`] = `
 - First value
 + Second value
 
-@@ -6,12 +6,16 @@
+@@ -6,12 +6,18 @@
         </label>
         <br />
         <input
@@ -85,7 +89,9 @@ exports[`String regex validation 1`] = `
 +         value=\\"antonio\\"
         />
 +       <br />
-+       <div>
++       <div
++         style=\\"color: red;\\"
++       >
 +         First name must start with \\"wooga.name\\"
 +       </div>
       </fieldset>
@@ -120,7 +126,7 @@ exports[`String required validation 1`] = `
 - First value
 + Second value
 
-@@ -6,12 +6,16 @@
+@@ -6,12 +6,18 @@
         </label>
         <br />
         <input
@@ -130,7 +136,9 @@ exports[`String required validation 1`] = `
 +         value=\\"\\"
         />
 +       <br />
-+       <div>
++       <div
++         style=\\"color: red;\\"
++       >
 +         First name is required
 +       </div>
       </fieldset>
