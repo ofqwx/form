@@ -15,9 +15,9 @@ Library to create generic React controlled forms
   - [Custom validations](#custom-validations)
 - [Example](#example)
 
----
+
 ## Getting started.
----
+
 With yarn:
 
 ```bash
@@ -29,9 +29,8 @@ With npm:
 ```bash
 npm install @ofqwx/form
 ```
----
+
 ## API
----
 
 ### **Form**
 
@@ -58,9 +57,7 @@ Currently we only support type **_"text"_** and it's the default value so you ca
 
 `validations` (optional): A list of validation functions, you can use our validators or you can [implement your own validation function](#custom-validations). Currently we support `required` and `regex` validation. Please read [how to use validations](#using-validations) for more information
 
----
 ## Validations
----
 
 In order to use our validator functions just import them and send it to the `<Input />` component in the `validations` array prop.
 
