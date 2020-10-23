@@ -1,38 +1,51 @@
+import { useEffect, useCallback, SyntheticEvent } from 'react';
 import { useForm } from '.';
 import { TValidations } from '../types/form';
 
-type TUseFieldOptions = {
+export type TFieldOptions = {
   validations: TValidations;
 };
 
-export default function useField(name: string, options?: TUseFieldOptions) {
+export type TField = {
+  name: string;
+  options?: TFieldOptions;
+};
+
+export default function useField(name: string, options?: TFieldOptions) {
   const {
     getValue,
     getError,
     updateFieldValue,
     setFieldError,
     cleanFieldError,
+    registerField,
   } = useForm();
 
-  function onChange(e, name, validations) {
-    const value = e.target.value;
+  useEffect(() => registerField({ name, options } as TField), []);
 
-    updateFieldValue(name, value);
+  const onChange = useCallback(
+    (e: SyntheticEvent, name: string, validations: TValidations) => {
+      const target = e.target as HTMLInputElement;
+      const value = target.value;
 
-    if (validations) {
-      cleanFieldError(name);
+      updateFieldValue(name, value);
 
-      for (const validate of validations) {
-        try {
-          validate(value);
-        } catch (error) {
-          setFieldError(name, error);
+      if (validations) {
+        cleanFieldError(name);
 
-          return undefined;
+        for (const validate of validations) {
+          try {
+            validate(value);
+          } catch (error) {
+            setFieldError(name, error);
+
+            return undefined;
+          }
         }
       }
-    }
-  }
+    },
+    [cleanFieldError, setFieldError, updateFieldValue]
+  );
 
   return {
     input: {

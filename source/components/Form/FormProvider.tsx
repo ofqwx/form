@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { createContext, ReactNode } from 'react';
+import React, { useState, useCallback } from 'react';
+import { createContext, ReactNode, SyntheticEvent } from 'react';
+import { TField } from '../../hooks/field';
 import { TKeyValue, TFormState } from '../../types/form';
 
 export const FormContext = createContext<TFormState>(null);
 
 type TFormProviderProps = {
-  onSubmit: (values: TKeyValue) => void;
+  onSubmit: (values: TKeyValue, event: SyntheticEvent) => void;
   initialValues: TKeyValue;
   children: ReactNode;
 };
@@ -15,73 +16,112 @@ export default function FormProvider({
   onSubmit,
   children,
 }: TFormProviderProps) {
+  const [fields, setFields] = useState([]);
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [fieldsWithChanges, setFieldsWithChanges] = useState([]);
 
-  function updateFieldValue(fieldName, newValue) {
-    setFormValues((prevFormValues) => {
-      return {
-        ...prevFormValues,
-        [fieldName]: newValue,
-      };
-    });
+  const registerField = useCallback(
+    (field: TField) => {
+      if (!fields.find((it) => it.name === field.name)) {
+        setFields((prevFields) => [...prevFields, field]);
+      }
+    },
+    [fields]
+  );
 
-    const valueHasChanged =
-      formValues[fieldName] !== newValue &&
-      initialValues[fieldName] !== newValue;
+  const updateFieldValue = useCallback(
+    (fieldName, newValue) => {
+      setFormValues((prevFormValues) => {
+        return {
+          ...prevFormValues,
+          [fieldName]: newValue,
+        };
+      });
 
-    if (valueHasChanged && !fieldsWithChanges.includes(fieldName)) {
-      setFieldsWithChanges((prevFieldsWithChanges) => [
-        ...prevFieldsWithChanges,
-        fieldName,
-      ]);
-    } else if (!valueHasChanged && fieldsWithChanges.includes(fieldName)) {
-      setFieldsWithChanges((prevFieldsWithChanges) =>
-        prevFieldsWithChanges.filter((field) => field !== fieldName)
-      );
-    }
-  }
+      const valueHasChanged =
+        formValues[fieldName] !== newValue &&
+        initialValues[fieldName] !== newValue;
 
-  function setFieldError(fieldName, error) {
+      if (valueHasChanged && !fieldsWithChanges.includes(fieldName)) {
+        setFieldsWithChanges((prevFieldsWithChanges) => [
+          ...prevFieldsWithChanges,
+          fieldName,
+        ]);
+      } else if (!valueHasChanged && fieldsWithChanges.includes(fieldName)) {
+        setFieldsWithChanges((prevFieldsWithChanges) =>
+          prevFieldsWithChanges.filter((field) => field !== fieldName)
+        );
+      }
+    },
+    [fieldsWithChanges, formValues, initialValues]
+  );
+
+  const setFieldError = useCallback((fieldName, error) => {
     setFormErrors((prevFormErrors) => ({
       ...prevFormErrors,
       [fieldName]: error,
     }));
-  }
+  }, []);
 
-  function cleanFieldError(fieldName) {
-    if (formErrors[fieldName]) {
-      setFormErrors((prevFormErrors) => {
-        delete prevFormErrors[fieldName];
-        return prevFormErrors;
-      });
-    }
-  }
+  const cleanFieldError = useCallback(
+    (fieldName) => {
+      if (formErrors[fieldName]) {
+        setFormErrors((prevFormErrors) => {
+          delete prevFormErrors[fieldName];
+          return prevFormErrors;
+        });
+      }
+    },
+    [formErrors]
+  );
 
-  function getValue(fieldName) {
-    return formValues[fieldName] || '';
-  }
+  const getValue = useCallback(
+    (fieldName) => {
+      return formValues[fieldName] || '';
+    },
+    [formValues]
+  );
 
-  function getError(fieldName) {
-    return formErrors[fieldName] || null;
-  }
+  const getError = useCallback(
+    (fieldName) => {
+      return formErrors[fieldName] || null;
+    },
+    [formErrors]
+  );
 
-  function isValid() {
-    return !Object.keys(formErrors).length;
-  }
+  const isValid = !Object.keys(formErrors).length;
 
-  function hasChanged() {
-    return Boolean(fieldsWithChanges.length)
-  }
+  const hasChanged = Boolean(fieldsWithChanges.length);
 
-  function submit(e) {
-    e.preventDefault();
+  const submit = useCallback(
+    (e) => {
+      e.preventDefault();
 
-    return onSubmit(formValues);
-  }
+      for (const field of fields) {
+        if (field.options?.validations) {
+          cleanFieldError(field.name);
+
+          // Check if fields are valid before submit
+          for (const validate of field.options?.validations) {
+            try {
+              validate(getValue(field.name));
+            } catch (error) {
+              setFieldError(field.name, error);
+
+              return undefined;
+            }
+          }
+        }
+      }
+
+      return onSubmit(formValues, e);
+    },
+    [fields, cleanFieldError, onSubmit, formValues, getValue, setFieldError]
+  );
 
   const formState = {
+    registerField,
     values: formValues,
     errors: formErrors,
     getValue,

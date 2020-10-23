@@ -5,6 +5,7 @@ Library to create generic React controlled forms
 # Table of Contents
 
 - [Getting started](#getting-started)
+- [Playground](#playground)
 - [API](#api)
   - [Form](#form)
   - [Input](#input)
@@ -30,6 +31,10 @@ With npm:
 npm install @ofqwx/form
 ```
 
+## Playground
+
+[Here](https://codesandbox.io/s/serene-curie-rk56v) you can take a look and play with a real implementation. You can also use it to find bugs and report it to me :).
+
 ## API
 
 ### **Form**
@@ -38,7 +43,7 @@ npm install @ofqwx/form
 
 **Props**
 
-`onSubmit` (required): A function to handle the values when a form is submitted. This function will receive the values from the form in the shape of an object where the keys will be the name of each field.
+`onSubmit` (required): A function to handle the values when a form is submitted. This function will receive the values from the form in the shape of an object where the keys will be the name of each field and the event of the submit if you need to use it.
 
 `initialValues` (optional): An object containing initial values if you want to show the form pre-filled. Keys in this object need to be the same as the names of the fields.
 
