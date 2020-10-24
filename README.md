@@ -1,6 +1,6 @@
 # Wooga Form
 
-Library to create generic React controlled forms
+A simple library to create generic React controlled forms.
 
 # Table of Contents
 
@@ -32,13 +32,13 @@ npm install @ofqwx/form
 
 ## Playground
 
-[Here](https://codesandbox.io/s/serene-curie-rk56v) you can take a look and play with a real implementation. You can also use it to find bugs and report it to me :).
+[Here](https://codesandbox.io/s/serene-curie-rk56v) you can check out a real implementation. If you find any bugs, feel free to report them :).
 
 ## API
 
 ### **Form**
 
-`<Form />` component wraps your form and handle the state of it.
+`<Form />` component wraps your form and handles the state of it.
 
 **Props**
 
@@ -52,22 +52,22 @@ npm install @ofqwx/form
 
 **Props**
 
-`name` (required): A string that defines the name of the input, this prop is what connects your input with the form state, so be sure in case you're using initialValues that names and initialValues keys are the same, otherwise this value will not be controlled by the Form component.
+`name` (required): A string that defines the name of the input. This prop is what connects your input with the form state. If you're using initialValues, the name of the input and its initialValues key must the same. Otherwise, this value will not be controlled by the Form component.
 
 `type` (optional): A string that defines the type of the input element.  
-Currently, we only support type **_"text"_** and it's the default value so you can commit this prop for now.
-
+The default value is **_"text"_**. 
 `label` (optional): A string for the label of your input.
 
-`validations` (optional): A list of validation functions, you can use our validators or you can [implement your own validation function](#custom-validations). Currently we support `required` and `regex` validation. Please read [how to use validations](#using-validations) for more information
+`validations` (optional): A list of validation functions. You can use the included validators or you can [implement your own validation function](#custom-validations). Currently, `required` and `regex` validations are supported. Read [how to use validations](#using-validations) for more information.
 
 ## Validations
 
-To use our validator functions just import them and send it to the `<Input />` component in the `validations` array prop.
+To use the validator functions just import them and send them to the `<Input />` component in the `validations` array prop.
+Since the validations argument is a list, you can send more that one validation (see Multiple Validations Example). The validations will be executed from top to bottom.
 
 ### Required validation
 
-Required validation only needs one argument with the message to show when validation fails.
+*Required* validation requires only one argument: the message to display when the validation fails.
 
 `validations.string.required(validationMessage)`
 
@@ -93,7 +93,7 @@ function MyForm() {
 
 ### Regex validation
 
-Regex validation needs one argument with the message to show when validation fails and a regex expression.
+*Regex* validation requires two arguments: the message to display when the validation fails and a regex expression.
 
 `validations.string.required(validationMessage, regexExpression)`
 
@@ -121,9 +121,7 @@ function MyForm() {
 }
 ```
 
-### Multiple validations
-
-For multiple validations just add the validation functions in the validations props, the validations will be executed from top to bottom.
+### Multiple Validations Example
 
 ```JSX
 import {Form, Input, validations} from '@ofqwx/form`
@@ -150,9 +148,9 @@ function MyForm() {
 }
 ```
 
-### Custom validations
+### Custom Validations
 
-If you want to create your validation function, just create a function that receives the message you want to show when validation fails and returns a function that receives the value to evaluate and **throw** the message in case of validation fails.
+If you want to create your validation function, create a function that receives the message you want to show when validation fails and returns a function that receives the value to evaluate and `throw`s the message if the validation fails.
 
 ```JSX
 function numberValidation(validationMessage) {
