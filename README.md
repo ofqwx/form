@@ -14,7 +14,6 @@ Library to create generic React controlled forms
   - [Regex](#regex-validation)
   - [Mutiple validations](#multiple-validations)
   - [Custom validations](#custom-validations)
-- [Example](#example)
 
 
 ## Getting started.
@@ -175,28 +174,4 @@ function numberValidation(validationMessage) {
 
   <button type="submit">Submit</button>
 </Form>
-```
-
-### Example
-
-Here you can see an example of a simple form implementation.
-
-```JSX
-import React, {useState} from 'react'
-import {Form, Input, validations} from '@ofqwx/form';
-
-function App() {
-  return (
-    <Form
-      initialValues={{ firstName: 'wooga' }}
-      onSubmit={yourOnSubmitFunctionHere}
-    >
-      <Input label="First name" name="firstName" validations={[
-        validations.string.required("This field is mandatory")
-      ]} />
-
-      <button type="submit">Submit</button>
-    </Form>
-  );
-}
 ```
