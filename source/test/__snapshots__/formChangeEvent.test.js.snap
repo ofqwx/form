@@ -6,16 +6,16 @@ exports[`Value change when change event is triggered 1`] = `
 + Second value
 
 @@ -5,11 +5,11 @@
-      </label>
-      <br />
-      <input
-        name=\\"firstName\\"
-        type=\\"text\\"
--       value=\\"Antonio\\"
-+       value=\\"Pedro\\"
-      />
+          First name
+        </label>
+        <input
+          label=\\"First name\\"
+          name=\\"firstName\\"
+-         value=\\"Antonio\\"
++         value=\\"Pedro\\"
+        />
+      </div>
       <button
         type=\\"submit\\"
-      >
-        Submit"
+      >"
 `;

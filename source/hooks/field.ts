@@ -1,17 +1,19 @@
 import { useEffect, useCallback, SyntheticEvent } from 'react';
 import { useForm } from '.';
+import { TField } from '../types/field';
 import { TValidations } from '../types/form';
 
 export type TFieldOptions = {
-  validations: TValidations;
+  validations?: TValidations;
+  label?: string;
 };
 
-export type TField = {
+export type TFieldProps = {
   name: string;
   options?: TFieldOptions;
 };
 
-export default function useField(name: string, options?: TFieldOptions) {
+export default function useField(name: string, options?: TFieldOptions): TField {
   const {
     getValue,
     getError,
@@ -21,7 +23,7 @@ export default function useField(name: string, options?: TFieldOptions) {
     registerField,
   } = useForm();
 
-  useEffect(() => registerField({ name, options } as TField), []);
+  useEffect(() => registerField({ name, options } as TFieldProps), []);
 
   const onChange = useCallback(
     (e: SyntheticEvent, name: string, validations: TValidations) => {
@@ -50,6 +52,7 @@ export default function useField(name: string, options?: TFieldOptions) {
   return {
     input: {
       name,
+      label: options?.label || null,
       onChange: (e) => onChange(e, name, options.validations),
       value: getValue(name),
       error: getError(name),

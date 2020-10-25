@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { Form, Input } from '../components';
+import { Form, Field } from '../components';
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import validations from '../validation/validation';
@@ -16,11 +16,21 @@ test('Submit and validate form values', () => {
       initialValues={{ firstName: 'wooga.name.antonio' }}
       onSubmit={mockSubmitFunction}
     >
-      <Input
-        label="First name"
+      <Field
         name="firstName"
-        validations={[validations.string.required('This field is required')]}
-      />
+        options={{
+          label: 'First name',
+          validations: [validations.string.required('This field is required')],
+        }}
+      >
+        {({ input }) => (
+          <div>
+            {input.label ? <label>{input.label}</label> : null}
+
+            <input {...input} />
+          </div>
+        )}
+      </Field>
 
       <button type="submit">Submit</button>
     </Form>

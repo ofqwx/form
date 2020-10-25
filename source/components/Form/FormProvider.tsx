@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { createContext, ReactNode, SyntheticEvent } from 'react';
-import { TField } from '../../hooks/field';
+import { TFieldProps } from '../../hooks/field';
 import { TKeyValue, TFormState } from '../../types/form';
 
 export const FormContext = createContext<TFormState>(null);
@@ -22,7 +22,7 @@ export default function FormProvider({
   const [fieldsWithChanges, setFieldsWithChanges] = useState([]);
 
   const registerField = useCallback(
-    (field: TField) => {
+    (field: TFieldProps) => {
       if (!fields.find((it) => it.name === field.name)) {
         setFields((prevFields) => [...prevFields, field]);
       }

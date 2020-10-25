@@ -1,5 +1,5 @@
 import { SyntheticEvent } from 'react';
-import { TField } from '../hooks/field';
+import { TFieldProps } from '../hooks/field';
 
 export type TKeyValue = {
   [key: string]: any;
@@ -8,7 +8,7 @@ export type TKeyValue = {
 export type TValidations = Array<(message: string) => void>;
 
 export type TFormState = null | {
-  registerField: (field: TField) => void;
+  registerField: (field: TFieldProps) => void;
   values: TKeyValue;
   errors: TKeyValue;
   getValue: (fieldName: string) => any;

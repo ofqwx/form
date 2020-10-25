@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { Form, Input } from '../components';
+import { Form, Field } from '../components';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { toMatchDiffSnapshot } from 'snapshot-diff';
 import '@testing-library/jest-dom/extend-expect';
@@ -14,11 +14,23 @@ expect.extend({ toMatchDiffSnapshot });
 test('String required validation', async () => {
   const { asFragment } = render(
     <Form initialValues={{ firstName: 'antonio' }} onSubmit={() => undefined}>
-      <Input
-        label="First name"
+      <Field
         name="firstName"
-        validations={[validations.string.required('First name is required')]}
-      />
+        options={{
+          label: 'First name',
+          validations: [validations.string.required('This field is required')],
+        }}
+      >
+        {({ input }) => (
+          <div>
+            {input.label ? <label>{input.label}</label> : null}
+
+            <input {...input} />
+
+            {input.error ? <div>{input.error}</div> : null}
+          </div>
+        )}
+      </Field>
 
       <button type="submit">Submit</button>
     </Form>
@@ -46,16 +58,28 @@ test('String regex validation', async () => {
 
   const { asFragment } = render(
     <Form onSubmit={() => undefined}>
-      <Input
-        label="First name"
+      <Field
         name="firstName"
-        validations={[
-          validations.string.regex(
-            'First name must start with "wooga.name"',
-            regex
-          ),
-        ]}
-      />
+        options={{
+          label: 'First name',
+          validations: [
+            validations.string.regex(
+              'First name must start with "wooga.name"',
+              regex
+            ),
+          ],
+        }}
+      >
+        {({ input }) => (
+          <div>
+            {input.label ? <label>{input.label}</label> : null}
+
+            <input {...input} />
+
+            {input.error ? <div>{input.error}</div> : null}
+          </div>
+        )}
+      </Field>
 
       <button type="submit">Submit</button>
     </Form>
@@ -83,17 +107,29 @@ test('String regex and required validation', async () => {
 
   const { asFragment } = render(
     <Form initialValues={{ firstName: 'antonio' }} onSubmit={() => undefined}>
-      <Input
-        label="First name"
+      <Field
         name="firstName"
-        validations={[
-          validations.string.required('First name is required'),
-          validations.string.regex(
-            'First name must start with "wooga.name"',
-            regex
-          ),
-        ]}
-      />
+        options={{
+          label: 'First name',
+          validations: [
+            validations.string.required('First name is required'),
+            validations.string.regex(
+              'First name must start with "wooga.name"',
+              regex
+            ),
+          ],
+        }}
+      >
+        {({ input }) => (
+          <div>
+            {input.label ? <label>{input.label}</label> : null}
+
+            <input {...input} />
+
+            {input.error ? <div>{input.error}</div> : null}
+          </div>
+        )}
+      </Field>
 
       <button type="submit">Submit</button>
     </Form>
