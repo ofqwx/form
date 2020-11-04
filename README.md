@@ -37,7 +37,7 @@ npm install @ofqwx/form
 
 ### **Form**
 
-`<Form />` component wraps your form and handles the state of it.
+`<Form />` component returns a controlled form that wraps your fields providing a state.
 
 **Props**
 
@@ -59,9 +59,9 @@ The default value is **_"text"_**.
 `options` (optional): an object that can contain:
 
 - `label`: A string for the label of your input.
-- `validations`: A list of validation functions. You can use the included validators or you can [implement your own validation function](#custom-validations). Currently, `required` and `regex` validations are supported. Read [how to use validations](#validations) for more information.
+- `validations`: A list of validation functions. You can use the included validators or you can [implement your own validation function](#custom-validations). Currently, `required` and `regex` validations are provided out of the box. Read [how to use validations](#validations) for more information.
 
-`children` (required): A function that will receive field state as argument.
+`children` (required): A function that will receive field state as argument and return a `ReactNode`.
 
 **Field State**
 
@@ -107,7 +107,6 @@ import {Form, Field, validations} from '@ofqwx/form`
 function MyForm() {
   return
     <Form onSubmit={() => undefined}>
-    <Field></Field>
       <Field
         name="firstName"
         options={{
