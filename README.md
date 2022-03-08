@@ -1,4 +1,4 @@
-# Wooga Form
+# Form
 
 A simple library to create generic React controlled forms.
 
